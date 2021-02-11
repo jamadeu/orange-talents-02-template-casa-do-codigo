@@ -1,7 +1,5 @@
 package br.com.zup.casadocodigo.entity;
 
-import br.com.zup.casadocodigo.repository.AuthorRepository;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -56,9 +54,5 @@ public class Author {
 
     public LocalDateTime getCreatedAt() {
         return createdAt;
-    }
-
-    public void create(AuthorRepository authorRepository) {
-        authorRepository.save(this);
     }
 }
