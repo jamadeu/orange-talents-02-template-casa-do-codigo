@@ -1,4 +1,6 @@
-package br.com.zup.casadocodigo.entities;
+package br.com.zup.casadocodigo.entity;
+
+import br.com.zup.casadocodigo.repository.AuthorRepository;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,5 +36,29 @@ public class Author {
         this.name = name;
         this.email = email;
         this.description = description;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void create(AuthorRepository authorRepository) {
+        authorRepository.save(this);
     }
 }
