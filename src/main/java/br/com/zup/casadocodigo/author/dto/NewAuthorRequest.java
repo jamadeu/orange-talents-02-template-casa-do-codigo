@@ -13,7 +13,7 @@ public class NewAuthorRequest {
     private String name;
     @NotEmpty
     @Email
-    @FieldUnique(message = "Email already in use")
+    @FieldUnique(message = "Email already in use", domainClass = Author.class, fieldName = "email")
     private String email;
     @NotEmpty
     @Size(max = 400)

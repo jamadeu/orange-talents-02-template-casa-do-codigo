@@ -7,7 +7,7 @@ import javax.validation.constraints.NotEmpty;
 
 public class NewCategoryRequest {
     @NotEmpty
-    @FieldUnique(message = "Category already exists")
+    @FieldUnique(message = "Category already exists", domainClass = Category.class, fieldName = "name")
     private String name;
 
     public String getName() {

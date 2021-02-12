@@ -2,12 +2,11 @@ package br.com.zup.casadocodigo.book.entity;
 
 import br.com.zup.casadocodigo.author.entity.Author;
 import br.com.zup.casadocodigo.category.entity.Category;
-import br.com.zup.casadocodigo.shared.validator.annotation.FieldUnique;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 public class Book {
@@ -15,7 +14,6 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotEmpty
-    @FieldUnique(message = "Title must be unique")
     private String title;
     @NotEmpty
     @Size(max = 500)
@@ -29,15 +27,14 @@ public class Book {
     @Min(100)
     private Integer numberPages;
     @NotEmpty
-    @FieldUnique(message = "Title must be unique")
     private String isbn;
     @NotNull
     @Future
-    private LocalDateTime publicationDate;
-    @OneToOne
+    private LocalDate publicationDate;
+    @ManyToOne
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "author_id", nullable = false)
     private Author author;
 
@@ -45,7 +42,7 @@ public class Book {
     public Book() {
     }
 
-    public Book(@NotEmpty String title, @NotEmpty @Size(max = 500) String resume, @NotEmpty String summary, @NotNull @Min(20) BigDecimal price, @NotNull @Min(100) Integer numberPages, @NotEmpty String isbn, @NotNull @Future LocalDateTime publicationDate, Category category, Author author) {
+    public Book(@NotEmpty String title, @NotEmpty @Size(max = 500) String resume, @NotEmpty String summary, @NotNull @Min(20) BigDecimal price, @NotNull @Min(100) Integer numberPages, @NotEmpty String isbn, @NotNull @Future LocalDate publicationDate, Category category, Author author) {
         this.title = title;
         this.resume = resume;
         this.summary = summary;
@@ -85,7 +82,7 @@ public class Book {
         return isbn;
     }
 
-    public LocalDateTime getPublicationDate() {
+    public LocalDate getPublicationDate() {
         return publicationDate;
     }
 
