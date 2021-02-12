@@ -1,6 +1,7 @@
 package br.com.zup.casadocodigo.author.controller;
 
 import br.com.zup.casadocodigo.author.dto.NewAuthorRequest;
+import br.com.zup.casadocodigo.author.dto.NewAuthorResponse;
 import br.com.zup.casadocodigo.author.entity.Author;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +26,7 @@ public class AuthorController {
         if (author == null) {
             return ResponseEntity.badRequest().body("Author not found");
         }
-        return ResponseEntity.ok(author);
+        return ResponseEntity.ok(new NewAuthorResponse(author));
     }
 
     @PostMapping

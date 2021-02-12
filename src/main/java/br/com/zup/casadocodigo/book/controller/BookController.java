@@ -24,7 +24,7 @@ public class BookController {
     public ResponseEntity<?> findById(@PathVariable Long id) {
         Book book = manager.find(Book.class, id);
         if (book == null) {
-            return ResponseEntity.badRequest().body("Book not found");
+            return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(book);
     }
