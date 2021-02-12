@@ -1,6 +1,5 @@
 package br.com.zup.casadocodigo.book.controller;
 
-import br.com.zup.casadocodigo.book.dto.ListAllBooksResponse;
 import br.com.zup.casadocodigo.book.dto.NewBookRequest;
 import br.com.zup.casadocodigo.book.entity.Book;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +8,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.net.URI;
@@ -31,8 +31,8 @@ public class BookController {
 
     @GetMapping
     public ResponseEntity<?> listAll() {
-        ListAllBooksResponse listAll = new ListAllBooksResponse();
-        return ResponseEntity.ok(listAll.listAll(manager));
+        Query query = manager.createQuery("select b.id, b.title from Book b");
+        return ResponseEntity.ok(query.getResultList());
     }
 
     @PostMapping
