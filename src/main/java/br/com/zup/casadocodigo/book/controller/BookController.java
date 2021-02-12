@@ -1,6 +1,7 @@
 package br.com.zup.casadocodigo.book.controller;
 
 import br.com.zup.casadocodigo.book.dto.NewBookRequest;
+import br.com.zup.casadocodigo.book.dto.NewBookResponse;
 import br.com.zup.casadocodigo.book.entity.Book;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,7 +27,7 @@ public class BookController {
         if (book == null) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(book);
+        return ResponseEntity.ok(new NewBookResponse(book));
     }
 
     @GetMapping
