@@ -1,5 +1,6 @@
 package br.com.zup.casadocodigo.book.controller;
 
+import br.com.zup.casadocodigo.book.dto.ListAllBooksResponse;
 import br.com.zup.casadocodigo.book.dto.NewBookRequest;
 import br.com.zup.casadocodigo.book.entity.Book;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +27,12 @@ public class BookController {
             return ResponseEntity.badRequest().body("Book not found");
         }
         return ResponseEntity.ok(book);
+    }
+
+    @GetMapping
+    public ResponseEntity<?> listAll() {
+        ListAllBooksResponse listAll = new ListAllBooksResponse();
+        return ResponseEntity.ok(listAll.listAll(manager));
     }
 
     @PostMapping
