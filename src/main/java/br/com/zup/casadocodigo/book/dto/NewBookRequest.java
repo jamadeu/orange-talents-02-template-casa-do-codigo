@@ -3,6 +3,7 @@ package br.com.zup.casadocodigo.book.dto;
 import br.com.zup.casadocodigo.author.entity.Author;
 import br.com.zup.casadocodigo.book.entity.Book;
 import br.com.zup.casadocodigo.category.entity.Category;
+import br.com.zup.casadocodigo.shared.validator.annotation.ExistsId;
 import br.com.zup.casadocodigo.shared.validator.annotation.FieldUnique;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -33,8 +34,10 @@ public class NewBookRequest {
     @JsonFormat(pattern = "dd/MM/yyyy", shape = JsonFormat.Shape.STRING)
     private LocalDate publicationDate;
     @NotNull
+    @ExistsId(message = "Category not found", domainClass = Category.class, fieldName = "id")
     private Long categoryId;
     @NotNull
+    @ExistsId(message = "Author not found", domainClass = Author.class, fieldName = "id")
     private Long authorId;
 
     public NewBookRequest(
