@@ -1,6 +1,7 @@
 package br.com.zup.casadocodigo.category.controller;
 
 import br.com.zup.casadocodigo.category.dto.NewCategoryRequest;
+import br.com.zup.casadocodigo.category.dto.NewCategoryResponse;
 import br.com.zup.casadocodigo.category.entity.Category;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +26,7 @@ public class CategoryController {
         if (category == null) {
             return ResponseEntity.badRequest().body("Category not found");
         }
-        return ResponseEntity.ok(category);
+        return ResponseEntity.ok(new NewCategoryResponse(category));
     }
 
     @PostMapping
