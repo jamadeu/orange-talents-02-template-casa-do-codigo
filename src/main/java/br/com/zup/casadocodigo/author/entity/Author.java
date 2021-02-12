@@ -1,4 +1,6 @@
-package br.com.zup.casadocodigo.entity;
+package br.com.zup.casadocodigo.author.entity;
+
+import br.com.zup.casadocodigo.shared.validator.annotation.EmailUnique;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,6 +22,7 @@ public class Author {
     private String name;
     @NotEmpty
     @Email
+    @EmailUnique(message = "Email already in use")
     private String email;
     @NotEmpty
     @Size(max = 400)

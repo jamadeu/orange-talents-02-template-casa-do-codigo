@@ -1,4 +1,4 @@
-package br.com.zup.casadocodigo.errors;
+package br.com.zup.casadocodigo.shared.errors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;

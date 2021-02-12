@@ -1,4 +1,4 @@
-package br.com.zup.casadocodigo.errors;
+package br.com.zup.casadocodigo.shared.errors;
 
 public class ErrorsDto {
 
