@@ -1,7 +1,7 @@
 package br.com.zup.casadocodigo.author.dto;
 
 import br.com.zup.casadocodigo.author.entity.Author;
-import br.com.zup.casadocodigo.shared.validator.annotation.EmailUnique;
+import br.com.zup.casadocodigo.shared.validator.annotation.FieldUnique;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -13,7 +13,7 @@ public class NewAuthorRequest {
     private String name;
     @NotEmpty
     @Email
-    @EmailUnique(message = "Email already in use")
+    @FieldUnique(message = "Email already in use")
     private String email;
     @NotEmpty
     @Size(max = 400)
