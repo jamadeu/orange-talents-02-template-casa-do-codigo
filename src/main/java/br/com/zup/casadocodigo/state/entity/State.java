@@ -19,6 +19,9 @@ public class State {
     @JoinColumn(name = "country_id", nullable = false)
     private Country country;
 
+    public State() {
+    }
+
     public State(@NotEmpty String name, @NotNull Country country) {
         this.name = name;
         this.country = country;

@@ -1,10 +1,10 @@
 package br.com.zup.casadocodigo.country.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import br.com.zup.casadocodigo.state.entity.State;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.List;
 
 @Entity
 public class Country {
@@ -13,6 +13,8 @@ public class Country {
     private Long id;
     @NotEmpty
     private String name;
+    @OneToMany(mappedBy = "country", cascade = CascadeType.ALL)
+    private List<State> states;
 
     public Country() {
     }
@@ -27,5 +29,9 @@ public class Country {
 
     public String getName() {
         return name;
+    }
+
+    public List<State> getStates() {
+        return states;
     }
 }
